@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blogger</title>
+    <link rel="stylesheet" href = "styles.css">
+    <!-- CSS only 
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    -->
+
+</head>
+<body bgcolor = #b2c0ce>
+    <div id="frame2">
+    
+        <a href = "/sign-in"> <button class="btn" >Sign In</button></a>
+        <br>
+        <br>
+        <a href = "/"> <button class="btn"> Sign Up</button> </a>
+    
+    </div>
+ <div id = "frame1" >
+    <center> <br><h1>Blogger</h1><h1><u>Sign In</u></h1>
+        <p><u><%= status %></u></p>
+    </center>
+    
+        <center>
+    <form action = "/sign-in" method="post">
+        <br><br>
+       
+        <p>Email ----  </p><input name = "email"><br><br>
+        <p>Password:  -- </p><input name = "pass1"><br><br>
+        
+        <button class="btn btn-primary" type="submit">Sign In</button>
+    </form>
+    
+</center>
+  
+ </div>
+
+</body>
+</html> 
