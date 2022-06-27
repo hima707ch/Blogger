@@ -15,7 +15,7 @@ app.use(bodyParse.urlencoded({ extended: true }));
 
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/views"))
-mongoose.connect("mongodb://localhost:27017/facebook");
+mongoose.connect("mongodb+srv://hima707ch:7073928944@himanshu.rdk9j5d.mongodb.net/Blogger");
 
 
 // Moongoose frame
@@ -23,8 +23,8 @@ mongoose.connect("mongodb://localhost:27017/facebook");
 const frame = mongoose.Schema({
     name: String,
     email: String,
-    pass1: Number,
-    pass2: Number,
+    pass1: String,
+    pass2: String,
     arr : Array
 
 });
