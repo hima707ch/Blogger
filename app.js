@@ -35,7 +35,7 @@ const Profile = mongoose.model("profiles", frame);
 
 // Variables
 var account;
-var arr = [];
+var array = [];
 
 
 // Routing
@@ -89,9 +89,9 @@ app.post("/profile/:acc",async function(req,res){
     title : req.body.title,
     text : req.body.text
     }
-    arr = account.arr;
-    await arr.push(post);
-    await Profile.updateOne({email:account.email},{$set: { arr:arr } });
+    array = account.arr;
+    await array.push(post);
+    await Profile.updateOne({email:account.email},{$set: { arr:array } });
     account = await Profile.findOne({ email:account.email });
     
     res.render("profile",{name:account.name, email : account.email,arr:account.arr})
