@@ -91,7 +91,7 @@ app.post("/profile/:acc",async function(req,res){
     }
     arr = account.arr;
     await arr.push(post);
-   // await Profile.updateOne({email:account.email},{arr:arr});
+    await Profile.updateOne({email:account.email},{name:arr[0].title});
     account = await Profile.findOne({ email:account.email });
     
     res.render("profile",{name:account.name, email : account.email,arr:account.arr})
