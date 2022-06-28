@@ -1,2 +1,2 @@
 # Blogger
-My first web devlopment project created using Node js, Mongo DB, Java script, CSS, EJS. In this you can create your account, sign in to your account, create post in your profile, delete post in your profile.
+My first web development project, created using Node js, Mongo DB, Javascript, CSS, and EJS. In this, you can create your account, sign in to your account, create a post in your profile, and delete a post in your profile.
