@@ -15,7 +15,7 @@ app.use(bodyParse.urlencoded({ extended: true }));
 
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/views"))
-mongoose.connect("mongodb+srv://hima707ch:7073928944@himanshu.rdk9j5d.mongodb.net/Blogger?retryWrites=true&w=majority/");
+mongoose.connect("mongodb+srv://hima707ch:7073928944@himanshu.rdk9j5d.mongodb.net/Blogger?retryWrites=true&w=majority/",{useNewUrlParser : true});
 
 
 // Moongoose frame
