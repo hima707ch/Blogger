@@ -92,10 +92,10 @@ app.post("/profile/:acc",async function(req,res){
     array = account.arr;
     await array.push(post);
     await Profile.updateOne({email:account.email},{$set: { arr:array } }).then((obj) => {
-                    console.log('Updated - ');
+                    
                 })
                 .catch((err) => {
-                    console.log('Error: ' + err);
+                  
                 });
     account = await Profile.findOne({ email:account.email });
     
