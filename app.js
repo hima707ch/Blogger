@@ -1,136 +1,39 @@
-
-// Include Externals Pack
-
 const express = require("express");
 const bodyParse = require("body-parser");
 const ejs = require("ejs");
-const mongoose = require("mongoose");
-const lo = require("lodash");
+var cors = require('cors');
+
+const home = require("./Routes/home-post");
+const Profile = require("./Models.js")
+var {router} = require("./Routes/signin-post");
+const {router3} = require("./Routes/profile-post");
+const {page} = require("./Routes/page");
+const signin = require("./Routes/signin-get");
+const homeG = require("./Routes/home-get");
+const profileG = require("./Routes/profile-get")
+const delet = require("./Routes/delete")
 
 
-// Initializing packs
-
+// Initializing Packs
 const app = express();
 app.use(bodyParse.urlencoded({ extended: true }));
-
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/views"))
-mongoose.connect("mongodb+srv://hima707ch:7073928944@himanshu.rdk9j5d.mongodb.net/Blogger?retryWrites=true&w=majority/",{useNewUrlParser : true});
+app.use(cors())
 
+// Post Routes
+app.use("/",home);
+app.use("/sign-in",router);
+app.use("/profile/:acc",router3);
 
-// Moongoose frame
+// Get Routes
+app.use("/profile/:acc", profileG);
+app.get("/profile/:acc/:page",page);
+app.get("/profile/:acc/:page/delete",delet);
 
-const frame = mongoose.Schema({
-    name: String,
-    email: String,
-    pass1: String,
-    pass2: String,
-    arr : Array
+app.use("/sign-in",signin);
+app.use("/",homeG);
 
-});
-// Moongoose  tabel = Profile     collection = profiles
-const Profile = mongoose.model("profiles", frame);
-
-
-
-// Variables
-var account;
-var array = [];
-
-
-// Routing
-
-app.post("/", async function (req, res) {
-
-    var profile = new Profile({
-        name: req.body.name,
-        email: req.body.email,
-        pass1: req.body.pass1,
-        pass2: req.body.pass2
-    });
-
-    var Find = await Profile.find({ email: req.body.email });
-
-    if (Find.length >= 1) {
-        res.render("home", { status: "Email not unique !!" })
-    }
-    else if (profile.pass1 === profile.pass2) {
-        res.render("home", { status: "Password Match Saved Successfully !!" })
-        profile.save();
-    }
-    else {
-        res.render("home", { status: "Try again !!" });
-    }
-});
-
-
-
-app.post("/sign-in", async function (req, res) {
-    const email = req.body.email;
-    const pass = req.body.pass1;
-
-    const find = await Profile.find({ email: email });
-   
-    if (find.length>0 && find[0].pass1 == pass)
-    { 
-        account = find[0];
-        res.redirect("/profile/"+email);
-}
-    else 
-    {
-        res.render("sign in",{status:"Try Again"})
-    }    
-});
-
-
-
-app.post("/profile/:acc",async function(req,res){
-    var post = {
-    title : req.body.title,
-    text : req.body.text
-    }
-    array = account.arr;
-    await array.push(post);
-    await Profile.updateOne({email:account.email},{$set: { arr:array } }).then((obj) => {
-                    console.log("updated");
-                })
-                .catch((err) => {
-                  console.log(err.message);
-                });
-    account = await Profile.findOne({ email:account.email });
-    
-    res.render("profile",{name:account.name, email : account.email,arr:account.arr})
-})
-
-
-
-// Get routes
-
-app.get("/profile/:acc",function(req,res){
-    res.render("profile",{name:account.name, email : account.email,arr:account.arr})
-});
-
-app.get("/profile/:acc/:page",function(req,res){
-    var post = 0;
-    account.arr.forEach(function(x){
-        if(lo.lowerCase(x.title) == lo.lowerCase(req.params.page)){
-            post = x;
-        }
-    });
-
-    if(post!==0) {
-        res.render("post-page",{title:post.title,text:post.text});
-    }
-    res.end();
-});
-
-app.get("/", function (req, res) {
-    res.render("home", { status: "Enter your details" });
-})
-
-app.get("/sign-in", function (req, res) {
-    res.render("sign in", { status: "" })
-})
 
 
 //Port

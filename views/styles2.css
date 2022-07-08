@@ -1,0 +1,78 @@
+h1 {
+    font-family: 'Heebo', sans-serif;
+    
+    font-weight: 400;
+    letter-spacing: 0.03rem;
+    font-style: normal;
+    text-transform: capitalize;
+    color: #040000;
+}
+
+#frame1 {
+    font-family: 'Heebo', sans-serif;
+    font-size: 0.9375rem;
+    font-weight: 400;
+    letter-spacing: 0.03rem;
+    font-style: normal;
+    text-transform: capitalize;
+    color: #FFFFFF;
+
+
+    width: 800px;
+    height: 500px;
+    background-color: #445180;
+    position: relative;
+    left: 250px;
+    top: 80px;
+}
+
+.btn {
+    -webkit-border-radius: 8;
+    -moz-border-radius: 8;
+    border-radius: 8px;
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 20px;
+    background: #010a10;
+    padding: 10px 22px 10px 22px;
+    text-decoration: none;
+    display: block;
+  }
+
+#frame2 {
+    
+    background-color: #b2c0ce;
+    position:absolute;
+    right: 5%;
+    top:5%;
+    display: block;
+}
+
+label {
+
+    font-family: 'Heebo', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    letter-spacing: 0.03rem;
+    font-style: normal;
+    text-transform: capitalize;
+    color: #FFFFFF;
+  
+    }
+
+    p {
+        font-size: 1.4rem;
+        display: inline;
+
+    }
+
+    .frame3 {
+        font-size: 1.4rem;
+        background-color: #070c24;
+        position:absolute;
+        right: 5%;
+        top:5%;
+        display: block;
+        padding: 10px 22px 10px 22px;
+        color : rgb(192, 188, 214);
+    }
